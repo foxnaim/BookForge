@@ -2,6 +2,7 @@
 
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
+import {FormData} from "@/app/types/type";
 import {
   TextField,
   Button,
@@ -12,10 +13,6 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 
-type FormData = {
-  email: string;
-  password: string;
-};
 
 export default function LoginPage() {
   const {
