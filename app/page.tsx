@@ -1,10 +1,10 @@
-import Login from "./pages/login";
+import Hello from "./pages/hello";
 
 
 export default function Home() {
   return (
     <div>
-      <Login/>
+      <Hello/>
     </div>
   );
 }

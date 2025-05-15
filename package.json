@@ -13,7 +13,7 @@
     "@emotion/styled": "^11.14.0",
     "@mui/material": "^7.1.0",
     "@mui/styled-engine-sc": "^7.1.0",
-    "framer-motion": "^12.11.3",
+    "framer-motion": "^12.11.4",
     "next": "15.3.2",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",

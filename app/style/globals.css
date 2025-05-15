@@ -2,10 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-/* globals.css */
+
 html, body, #__next {
  height: 100%;
  margin: 0;
- background-color: black;
+  padding: 0;
+ color: white;
  overflow-x: hidden;
 }
