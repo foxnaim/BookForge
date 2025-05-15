@@ -4,7 +4,7 @@ import React from "react";
 import { Button } from "@mui/material";
 import { motion } from "framer-motion";
 import "../style/globals.css"; // поправь путь, если нужно
-import { useRouter } from "next/router"; // ✅ правильный хук
+import { useRouter } from "next/navigation"; 
 
 const Hello = () => {
  const router = useRouter();
@@ -22,7 +22,7 @@ const Hello = () => {
   const currentColors = colors[theme];
 
   const handleStart = () => {
-    router.push("/Login");
+    router.push("/login");
   };
 
   return (
