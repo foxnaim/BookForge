@@ -3,7 +3,7 @@ import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
-import clientPromise from "../../../../lib/mongodb";
+import clientPromise from "../../../lib/mongodb";
 import bcrypt from "bcryptjs";
 import type { Session, User } from "next-auth";
 import type { JWT } from "next-auth/jwt";

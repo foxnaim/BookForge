@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
-import { connectToDatabase } from "@/lib/mongodb";
+import clientPromise from "../../lib/mongodb";
 import { authOptions } from "../auth/[...nextauth]/route";
 
 export async function GET() {
@@ -14,7 +14,8 @@ export async function GET() {
       );
     }
 
-    const { db } = await connectToDatabase();
+    const client = await clientPromise;
+    const db = client.db();
     const books = await db
       .collection("books")
       .find({ authorEmail: session.user.email })
@@ -52,7 +53,8 @@ export async function POST(req: Request) {
       );
     }
 
-    const { db } = await connectToDatabase();
+    const client = await clientPromise;
+    const db = client.db();
 
     const book = {
       ...bookData,

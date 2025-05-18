@@ -2,8 +2,9 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { Container, Typography, Box, Button, Grid, CircularProgress } from "@mui/material";
-import BookCard from "@/components/BookCard";
+import { Container, Typography, Box, Button, CircularProgress } from "@mui/material";
+import Grid from "@mui/material/Grid";
+import BookCard from "../components/BookCard";
 
 interface Book {
   _id: string;
