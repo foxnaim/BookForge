@@ -1,8 +1,21 @@
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
+import GitHubProvider from "next-auth/providers/github";
+import { MongoDBAdapter } from "@auth/mongodb-adapter";
+import clientPromise from "./mongodb";
 import type { NextAuthOptions } from "next-auth";
+import { compare } from 'bcryptjs';
 
 export const authOptions: NextAuthOptions = {
   providers: [
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    }),
+    GitHubProvider({
+      clientId: process.env.GITHUB_CLIENT_ID!,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+    }),
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -11,16 +24,19 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         const { email, password } = credentials ?? {};
-
-        // Замените на свою логику проверки пользователя
-        if (email === "msWhoYou@gmail.com" && password === "133700Qw") {
-          return { id: "1", name: "msWho I", email };
+        const client = await clientPromise;
+        const db = client.db();
+        const user = await db.collection('users').findOne({ email });
+        if (user && user.password && await compare(password, user.password)) {
+          // Не возвращайте пароль!
+          const { password, ...userWithoutPass } = user;
+          return { ...userWithoutPass, id: user._id.toString() };
         }
-
         return null;
       },
     }),
   ],
+  adapter: MongoDBAdapter(clientPromise),
   pages: {
     signIn: "/login",
   },

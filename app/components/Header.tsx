@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import { Button } from '@mui/material';
 
+const ADMIN_EMAIL = process.env.NEXT_PUBLIC_ADMIN_EMAIL;
+
 export default function Header() {
   const { data: session } = useSession();
 
@@ -15,7 +17,7 @@ export default function Header() {
         <Link href="/" className="text-2xl font-bold text-white tracking-wide hover:text-blue-300 transition">My Book Builder</Link>
         <Link href="/builder" className="text-white hover:text-blue-400 transition">Генератор</Link>
         <Link href="/profile" className="text-white hover:text-blue-400 transition">Профиль</Link>
-        {session?.user?.role === 'admin' && (
+        {session?.user?.email === ADMIN_EMAIL && (
           <Link href="/admin" className="text-white hover:text-blue-400 transition">Админ</Link>
         )}
       </div>

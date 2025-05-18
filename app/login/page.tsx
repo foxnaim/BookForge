@@ -149,6 +149,11 @@ export default function Login() {
                   </Button>
                 </motion.div>
               </form>
+              <Box mt={4} className="flex flex-col gap-2">
+                <Button variant="text" color="primary" fullWidth onClick={() => window.location.href = '/register'}>
+                  У вас нет аккаунта? Перейти к регистрации
+                </Button>
+              </Box>
             </Box>
           </Container>
         </motion.div>
