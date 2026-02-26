@@ -12,7 +12,7 @@
     "@auth/mongodb-adapter": "^3.9.1",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@mui/material": "^7.1.0",
+    "@mui/material": "^7.3.8",
     "@mui/styled-engine-sc": "^7.1.0",
     "@types/bcryptjs": "^3.0.0",
     "bcryptjs": "^3.0.2",
